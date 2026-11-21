@@ -31,3 +31,15 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Replit ###
+.cache/
+.config/
+.upm/
+replit.nix
+replit.md
+
+### Misc ###
+*.log
+.env
+*.zip

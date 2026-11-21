@@ -1,3 +1,9 @@
+run = "mvn spring-boot:run"
+
 [nix]
-channel = "stable-25_05"
-packages = ["unzip"]
+channel = "stable-24_05"
+packages = ["jdk17", "maven"]
+
+[[ports]]
+localPort = 8080
+externalPort = 80
