@@ -13,6 +13,7 @@ public class TaskRequest {
     @NotBlank(message = "Task title is required")
     @Size(max = 150, message = "Title must be under 150 characters")
     private String title;
+    @Size(max = 255, message = "Description must be under 255 characters")
     private String description;
     private TaskStatus status;
     private TaskPriority priority;

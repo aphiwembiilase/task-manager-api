@@ -15,9 +15,10 @@ Requests flow from controller to service to repository: controllers handle HTTP,
 
 ## Running it
 
+Requires Java 17 and Maven. Data is stored in an in-memory H2 database, so it resets every time the app restarts.
+
 ```
 mvn spring-boot:run
-Requires Java 17 and Maven. Data is stored in an in-memory H2 database, so it resets every time the app restarts.
 ```
 
 The API starts on http://localhost:8080.
@@ -30,11 +31,11 @@ The API starts on http://localhost:8080.
 | GET | /api/projects/{id} | Get a single project by id |
 | POST | /api/projects | Create a new project |
 | PUT | /api/projects/{id} | Update an existing project's name and description |
-| DELETE | /api/projects/{id} | Delete a project (returns 204 No Content) |
+| DELETE | /api/projects/{id} | Delete a project and all its tasks (returns 204 No Content) |
 | GET | /api/tasks | List tasks, optional ?projectId= and ?status= filters |
 | GET | /api/tasks/{id} | Get a single task by id |
 | POST | /api/tasks | Create a task in a project (status defaults to TODO, priority to MEDIUM) |
-| PUT | /api/tasks/{id} | Update an existing task |
+| PUT | /api/tasks/{id} | Update an existing task (projectId is required and can move the task to another project) |
 | DELETE | /api/tasks/{id} | Delete a task (returns 204 No Content) |
 
 ## Example requests

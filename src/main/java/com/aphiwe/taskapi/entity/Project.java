@@ -2,6 +2,8 @@ package com.aphiwe.taskapi.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "projects")
@@ -17,6 +19,9 @@ public class Project {
   private String description;
   
   private LocalDateTime createdAt;
+
+  @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+  private List<Task> tasks = new ArrayList<>();
 
   public Project(){  
   }

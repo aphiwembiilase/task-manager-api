@@ -26,7 +26,6 @@ public class TaskService {
         this.projectRepository = projectRepository;
     }
 
-    // Worked example: picks the right repository method based on which filters were given
     @Transactional(readOnly = true)
     public List<TaskResponse> getAllTasks(Long projectId, TaskStatus status) {
         List<Task> tasks;
@@ -70,6 +69,10 @@ public class TaskService {
     public TaskResponse updateTask(Long id, TaskRequest request) {
         Task task = findTaskOrThrow(id);
 
+        Project project = projectRepository.findById(request.getProjectId())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Project not found with id: " + request.getProjectId()));
+        task.setProject(project);
         task.setTitle(request.getTitle());
         task.setDescription(request.getDescription());
         task.setDueDate(request.getDueDate());
